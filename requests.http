@@ -1,0 +1,16 @@
+### GET request to example server
+POST localhost:3000/register
+Content-Type: application/json
+
+{
+  "email": "toto4@gmail.com",
+  "password": "1234567"
+}
+###
+POST localhost:3000/login
+Content-Type: application/json
+
+{
+  "email": "toto4@gmail.com",
+  "password": "1234567"
+}
