@@ -14,3 +14,20 @@ Content-Type: application/json
   "email": "toto4@gmail.com",
   "password": "1234567"
 }
+####
+POST livestream-app-getstream-server-production.up.railway.app/register
+Content-Type: application/json
+
+{
+  "email": "toto5@gmail.com",
+  "password": "1234567"
+}
+
+###
+POST livestream-app-getstream-server-production.up.railway.app/login
+Content-Type: application/json
+
+{
+  "email": "toto5@gmail.com",
+  "password": "1234567"
+}
