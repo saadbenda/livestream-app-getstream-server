@@ -15,7 +15,7 @@ Content-Type: application/json
   "password": "1234567"
 }
 ####
-POST livestream-app-getstream-server-production.up.railway.app/register
+POST https://livestream-app-getstream-server.vercel.app/register
 Content-Type: application/json
 
 {

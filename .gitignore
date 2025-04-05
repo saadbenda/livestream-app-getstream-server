@@ -56,3 +56,4 @@ typings/
 *.iml
 .gradle/
 local.properties
+.vercel
