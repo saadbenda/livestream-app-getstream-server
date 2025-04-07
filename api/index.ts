@@ -2,11 +2,16 @@ import express from "express";
 import dotenv from "dotenv";
 import {genSaltSync, hashSync} from "bcrypt";
 import {StreamChat} from "stream-chat";
+import bodyParser from "body-parser";
+import { sql } from "@vercel/postgres";
 
 dotenv.config();
 
 const {PORT, STREAM_API_KEY, STREAM_API_SECRET} = process.env;
 const client = StreamChat.getInstance(STREAM_API_KEY!, STREAM_API_SECRET);
+
+// Create application/x-www-form-urlencoded parser
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const app = express();
 app.use(express.json());
@@ -19,7 +24,13 @@ interface User {
 const USERS: User[] = [];
 const salt = genSaltSync(10);
 
-app.post('/register', async (req: any, res: any) => {
+
+app.get('/', function (req, res) {
+    res.status(200).send('Hello World!');
+});
+
+
+app.post('/register', urlencodedParser, async (req: any, res: any) => {
     const {email, password} = req.body;
     const existingUser = USERS.find((user) => user.email === email);
     if (existingUser) {
@@ -53,7 +64,7 @@ app.post('/register', async (req: any, res: any) => {
     return res.status(200).json({user: existingUser});
 });
 
-app.post('/login', async (req: any, res: any) => {
+app.post('/login', urlencodedParser, async (req: any, res: any) => {
     const {email, password} = req.body;
     const user = USERS.find((user) => user.email === email);
     if (!user) {
@@ -72,6 +83,4 @@ app.post('/login', async (req: any, res: any) => {
     }
 })
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+app.listen(3000, () => console.log('Server ready on port 3000.'));

@@ -1,22 +1,25 @@
 {
-  "name": "livestream-app-getstream-server",
-  "version": "1.0.0",
-  "description": "livestream app with getstream.io for server",
-  "main": "index.js",
-  "scripts": {
-    "start:dev": "nodemon",
-    "build": "npm install && rimraf ./build && tsc",
-    "start": "node build/index.js "
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "dotenv": "^16.4.7",
-    "express": "^5.1.0",
-    "stream-chat": "^8.58.0"
-  },
-  "devDependencies": {
+	"name": "express",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node api/index.ts",
+		"dev": "nodemon api/index.ts",
+		"build": "rimraf dist && tsc"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@vercel/postgres": "^0.7.2",
+		"dotenv": "^16.4.1",
+		"express": "^4.18.2",
+		"bcrypt": "^5.1.1",
+		"stream-chat": "^8.58.0"
+	},
+	"devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.1",
     "@types/node": "^22.14.0",
