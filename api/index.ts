@@ -30,7 +30,7 @@ app.get('/', function (req, res) {
 });
 
 
-app.post('/register', urlencodedParser, async (req: any, res: any) => {
+app.post('/register', async (req: any, res: any) => {
     const {email, password} = req.body;
     const existingUser = USERS.find((user) => user.email === email);
     if (existingUser) {
@@ -64,7 +64,7 @@ app.post('/register', urlencodedParser, async (req: any, res: any) => {
     return res.status(200).json({user: existingUser});
 });
 
-app.post('/login', urlencodedParser, async (req: any, res: any) => {
+app.post('/login', async (req: any, res: any) => {
     const {email, password} = req.body;
     const user = USERS.find((user) => user.email === email);
     if (!user) {
